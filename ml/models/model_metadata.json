@@ -1,0 +1,11 @@
+{
+  "model_version": "v1.0.0",
+  "classifier_algorithm": "LogisticRegression",
+  "regressor_algorithm": "LinearRegression",
+  "trained_at": "2026-09-26T17:13:31.040937+00:00",
+  "dataset_size": 420,
+  "train_size": 315,
+  "val_size": 105,
+  "feature_count": 19,
+  "dataset_provenance": "Synthetic prototype dataset for demonstration and model development."
+}

@@ -1,0 +1,10 @@
+{
+  "description": "Streamline land acquisition processes with predictive analytics and risk assessment, enabling government officials to monitor projects and mitigate delays effectively.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

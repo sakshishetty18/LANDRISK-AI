@@ -1,0 +1,53 @@
+services:
+  postgres:
+    image: postgis/postgis:16-3.4
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: acquinova
+      POSTGRES_USER: acquinova
+      POSTGRES_PASSWORD: acquinova
+    ports:
+      - "5432:5432"
+    volumes:
+      - acquinova_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U acquinova"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      ENVIRONMENT: development
+      DATABASE_URL: postgresql://acquinova:acquinova@postgres:5432/acquinova
+      SECRET_KEY: ${SECRET_KEY:-dev-only-insecure-secret-change-me}
+      CORS_ORIGINS: http://localhost:5173,http://localhost:4173,http://localhost:8081
+    ports:
+      - "8000:8000"
+    volumes:
+      - acquinova_ml_models:/app/ml/models
+      - landrisk_documents:/app/storage/documents
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+      args:
+        VITE_API_URL: http://localhost:8000
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "8081:80"
+
+volumes:
+  acquinova_pgdata:
+  acquinova_ml_models:
+  landrisk_documents:

@@ -1,0 +1,21 @@
+[
+  "land_acquisition_ratio",
+  "compensation_pending_ratio",
+  "affected_family_density",
+  "approval_delay_ratio",
+  "documentation_completeness_ratio",
+  "legal_case_density",
+  "possession_gap",
+  "rr_progress_gap",
+  "survey_completion_gap",
+  "stakeholder_response_score",
+  "historical_agency_delay_rate",
+  "days_in_current_stage",
+  "milestone_delay_count",
+  "notification_age_days",
+  "compensation_delay_days",
+  "land_remaining_percentage",
+  "project_complexity_score",
+  "current_stage_index",
+  "legal_dispute_severity_score"
+]
